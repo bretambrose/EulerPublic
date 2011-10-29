@@ -1,0 +1,6 @@
+*.user
+Euler/Run/*.exe
+Euler/Run/*.dll
+Euler/FSharpSolutions/bin/
+Euler/FSharpSolutions/obj/
+*.suo
