@@ -1,29 +1,45 @@
-﻿module Problem24
+﻿(*
+    Problem24.fs
+        A permutation is an ordered arrangement of objects. For example, 3124 is one possible permutation of the digits 1, 2, 3 and 4. 
+        If all of the permutations are listed numerically or alphabetically, we call it lexicographic order. The lexicographic permutations of 0, 1 and 2 are:
+
+        012   021   102   120   201   210
+
+        What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
+
+        Solution Notes:
+
+        While mathematically easy, I struggled with the data representation again, and eventually gave up and used an array.  The smart solution requires
+        an iterative resorting of the remaining indices (unless you swap and shift directly, but that requires writing extra code) and anything other than
+        an array is not good for that.  I looked into .NET's sorted data structures and none of them had indexed random access (keyed random access will not
+        work unless you reassign keys every iteration).
+
+        The basic idea of the solution is to compute each digit, from left-to-right, by dividing an accumulation variable (which starts at n = 1000000) by the
+        number of possible ordering of the remaining digits (k!, where k is the number of remaining digits).  The accumulation variable becomes the remainder of 
+        that division and the digit set is reduced and resorted (because we exchanged the correct digit with whatever was in the current index).
+
+	(c) Copyright 2011, Bret Ambrose (mailto:bretambrose@gmail.com).
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+*)
+
+module Problem24
 
 open System
 open System.Collections.Generic
 open System.Collections
-
-(*
-
-    A permutation is an ordered arrangement of objects. For example, 3124 is one possible permutation of the digits 1, 2, 3 and 4. 
-    If all of the permutations are listed numerically or alphabetically, we call it lexicographic order. The lexicographic permutations of 0, 1 and 2 are:
-
-    012   021   102   120   201   210
-
-    What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
-
-    Solution Notes:
-
-    While mathematically easy, I struggled with the data representation again, and eventually gave up and used an array.  The smart solution requires
-    an iterative resorting of the remaining indices (unless you swap and shift directly, but that requires writing extra code) and anything other than
-    an array is not good for that.  I looked into .NET's sorted data structures and none of them had indexed random access (keyed random access will not
-    work unless you reassign keys every iteration).
-
-    The basic idea of the solution is to compute each digit, from left-to-right, by dividing an accumulation variable (which starts at n = 1000000) by the
-    number of possible ordering of the remaining digits (k!, where k is the number of remaining digits).  The accumulation variable becomes the remainder of 
-    that division and the digit set is reduced and resorted (because we exchanged the correct digit with whatever was in the current index).
-*)
 
 let Compute_Digit_Permutation n =
     let sorted_digits = Array.init 10 ( fun i -> i )

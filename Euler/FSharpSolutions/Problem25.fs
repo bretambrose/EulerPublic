@@ -1,22 +1,38 @@
-﻿module Problem25
+﻿(*
+    Problem25.fs
+        The Fibonacci sequence is defined by the recurrence relation:
+
+        F(n) = F(n-1) + F(n-2), where F(1) = 1 and F(2) = 1.
+
+        F(12) = 144
+        The 12th term, F(12), is the first term to contain three digits.
+
+        What is the first term in the Fibonacci sequence to contain 1000 digits?
+
+        Solution Notes:
+
+        To do something new, I used the generator pattern for sequences here.  I like it but it's kind of strange.  I also converted the fib logic to a genericized version.
+
+	(c) Copyright 2011, Bret Ambrose (mailto:bretambrose@gmail.com).
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+*)
+
+module Problem25
 
 open System
-
-(*
-
-    The Fibonacci sequence is defined by the recurrence relation:
-
-    F(n) = F(n-1) + F(n-2), where F(1) = 1 and F(2) = 1.
-
-    F(12) = 144
-    The 12th term, F(12), is the first term to contain three digits.
-
-    What is the first term in the Fibonacci sequence to contain 1000 digits?
-
-    Solution Notes:
-
-    To do something new, I used the generator pattern for sequences here.  I like it but it's kind of strange.  I also converted the fib logic to a genericized version.
-*)
 
 let Problem25_v1 n =
     if n < 1 then

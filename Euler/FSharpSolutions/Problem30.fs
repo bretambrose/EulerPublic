@@ -1,27 +1,42 @@
-﻿module Problem30
+﻿(*
+    Problem30.fs
+        Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:
+
+        1634 = 1^4 + 6^4 + 3^4 + 4^4
+        8208 = 8^4 + 2^4 + 0^4 + 8^4
+        9474 = 9^4 + 4^4 + 7^4 + 4^4
+        As 1 = 1^4 is not a sum it is not included.
+
+        The sum of these numbers is 1634 + 8208 + 9474 = 19316.
+
+        Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
+
+        Solution Notes:
+
+        The main thing we need to figure out is the maximum number we need to check.  Once we have that, then simple decompose everything in [2 .. MaxNumberToCheck]
+        into single digits, sum the 5th powers of the digits, and check against the original number to test for membership, summing over the ones that pass to get
+        the final answer.
+
+	(c) Copyright 2011, Bret Ambrose (mailto:bretambrose@gmail.com).
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+*)
+
+module Problem30
 
 open System
-
-(*
-
-    Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:
-
-    1634 = 1^4 + 6^4 + 3^4 + 4^4
-    8208 = 8^4 + 2^4 + 0^4 + 8^4
-    9474 = 9^4 + 4^4 + 7^4 + 4^4
-    As 1 = 1^4 is not a sum it is not included.
-
-    The sum of these numbers is 1634 + 8208 + 9474 = 19316.
-
-    Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
-
-    Solution Notes:
-
-    The main thing we need to figure out is the maximum number we need to check.  Once we have that, then simple decompose everything in [2 .. MaxNumberToCheck]
-    into single digits, sum the 5th powers of the digits, and check against the original number to test for membership, summing over the ones that pass to get
-    the final answer.
-
-*)
 
 let rec Make_Digit_List value =
     if value < 10 then

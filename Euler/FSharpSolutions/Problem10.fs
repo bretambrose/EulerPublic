@@ -1,12 +1,29 @@
-﻿module Problem10
+﻿(*
+    Problem10.fs
+        Find the sum of all the primes below two million.
+
+        Solution notes: Sieve of Erastothenes is ideal here, although it's memory footprint is rough
+
+	(c) Copyright 2011, Bret Ambrose (mailto:bretambrose@gmail.com).
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+*)
+
+module Problem10
 
 open System
-
-(*
-    Find the sum of all the primes below two million.
-
-    Solution notes: Sieve of Erastothenes is ideal here, although it's memory footprint is rough
-*)
 
 (*
     Our sieve will have zero meaning something's not a prime and the index itself meaning something is a prime

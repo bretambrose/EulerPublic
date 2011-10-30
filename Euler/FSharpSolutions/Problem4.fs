@@ -1,19 +1,37 @@
-﻿module Problem4
+﻿(*
+
+    Problem4.fs
+        A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 * 99.
+
+        Find the largest palindrome made from the product of two 3-digit numbers
+
+        Notes:
+
+        I was sorely tempted to convert the products to strings and do the palindrom test on the string rather than a number.  Testing palindromes on numbers
+        involves an unpleasant amount of dividing and modding as well as using exponentiation if you don't precompute a vector of base ^ n values to divide against (which
+        I didn't). 
+
+	(c) Copyright 2011, Bret Ambrose (mailto:bretambrose@gmail.com).
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+*)
+
+module Problem4
 
 open System
 
-(*
-
-A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 * 99.
-
-Find the largest palindrome made from the product of two 3-digit numbers
-
-Notes:
-
-I was sorely tempted to convert the products to strings and do the palindrom test on the string rather than a number.  Testing palindromes on numbers
-involves an unpleasant amount of dividing and modding as well as using exponentiation if you don't precompute a vector of base ^ n values to divide against (which
-I didn't). 
-*)
 let Is_Palindrome_Base_10 x =
     UserNumerics.Is_Palindrome x 10;;
 

@@ -1,35 +1,50 @@
-﻿module Problem15
+﻿(*
+    Problem15.fs
+        How many routes are there through a 20 x 20 grid if no backtracking is allowed?
 
-open System
+        Solution notes:
 
-(*
+        Finally, a problem that's not completely lame.
 
-    How many routes are there through a 20 x 20 grid if no backtracking is allowed?
+        If you let R(m, n) denote how many unique routes exist in an m x n grid, then clearly
 
-    Solution notes:
-
-    Finally, a problem that's not completely lame.
-
-    If you let R(m, n) denote how many unique routes exist in an m x n grid, then clearly
-
-        R(1, i) = R(i, 1) = i + 1 
+            R(1, i) = R(i, 1) = i + 1 
     
-    for any i, giving us our base case.
+        for any i, giving us our base case.
 
-    Similarly, it is easy to see
+        Similarly, it is easy to see
 
-        R(i, j) = R(i-1, j) + R(i, j-1)
+            R(i, j) = R(i-1, j) + R(i, j-1)
 
-    for i, j > 1
+        for i, j > 1
 
-    The solution translates these equations into a simple dynamic programming problem using a 2D array
+        The solution translates these equations into a simple dynamic programming problem using a 2D array
 
-    Post-solution notes:
+        Post-solution notes:
 
-    Hmm, you can actually calculate this directly using Choose(n, k), in particular Choose(2N, N).  In the more general
-    case of an M x N grid, it becomes Choose( M + N, N ).  Guess I'm not so smart after all =(
+        Hmm, you can actually calculate this directly using Choose(n, k), in particular Choose(2N, N).  In the more general
+        case of an M x N grid, it becomes Choose( M + N, N ).  Guess I'm not so smart after all =(
+
+	(c) Copyright 2011, Bret Ambrose (mailto:bretambrose@gmail.com).
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
 *)
 
+module Problem15
+
+open System
 
 let Problem15_v1 n =
     let ( route_counts : uint64[,] ) = Array2D.zeroCreate (n + 1) (n + 1)

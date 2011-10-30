@@ -1,12 +1,30 @@
-﻿module Problem3
+﻿(*
+
+    Problem3.fs
+        The prime factors of 13195 are 5, 7, 13 and 29.
+
+        What is the largest prime factor of the number 600851475143 ?
+
+	(c) Copyright 2011, Bret Ambrose (mailto:bretambrose@gmail.com).
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+*)
+
+module Problem3
 
 open System
-
-(*
-The prime factors of 13195 are 5, 7, 13 and 29.
-
-What is the largest prime factor of the number 600851475143 ?
-*)
 
 let Max_Factor_List current_max (factor, occurrences) =
     if factor > current_max then
